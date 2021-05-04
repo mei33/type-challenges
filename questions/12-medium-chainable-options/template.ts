@@ -1,4 +1,4 @@
-type Chainable = {
-  option(key: string, value: any): any
-  get(): any
+type Chainable<C = {}> = {
+  option<K extends string | number | symbol, V>(key: K, value: V): Chainable<C & {[P in K]: V}>
+  get(): C
 }
